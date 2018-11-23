@@ -18,6 +18,17 @@ public class BrandController {
     private BrandService brandService;
 
     /**
+     * 根据页号和页大小查询品牌列表
+     * @param page 页号
+     * @param rows 页大小
+     * @return 品牌列表
+     */
+    @GetMapping("/testPage")
+    public List<TbBrand> testPage(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows){
+        return brandService.testPage(page, rows);
+    }
+
+    /**
      * 查询所有品牌数据
      * @return 品牌列表json格式字符串
      */
