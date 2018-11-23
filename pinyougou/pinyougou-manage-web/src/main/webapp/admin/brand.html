@@ -12,11 +12,12 @@
 	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/angularjs/angular.min.js"></script>
-
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+    <script src="../plugins/angularjs/pagination.js"></script>
     <script type="text/javascript">
 
         //定义模块
-        var app = angular.module("pinyougou",[]);
+        var app = angular.module("pinyougou",["pagination"]);
 
         //定义品牌的处理器
         app.controller("brandController", function ($scope, $http) {
@@ -30,10 +31,46 @@
 
             };
 
+            //初始化分页导航条的参数
+            $scope.paginationConf = {
+                //页号
+                currentPage: 1,
+                //页大小
+                itemsPerPage: 10,
+                //总记录
+                totalItems: 0,
+                //页大小选择
+                perPageOptions: [10, 20, 30, 40, 50],
+                //如果页号发生改变的事件
+                onChange:function(){
+                    $scope.reloadList();
+                }
+            };
+
+            $scope.reloadList = function () {
+                $scope.findPage($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);
+
+            };
+
+            //根据分页信息查询数据
+            $scope.findPage = function (page, rows) {
+                $http.get("../brand/findPage.do?page=" + page + "&rows=" + rows).success(function (response) {
+                    //response是一个分页结果对象pageResult
+                    $scope.paginationConf.totalItems = response.total;
+
+                    //更新记录列表
+                    $scope.list = response.rows;
+
+                }).error(function () {
+                    alert("加载数据失败！");
+                });
+
+            };
+
         });
     </script>
 </head>
-<body ng-app="pinyougou" ng-controller="brandController" ng-init="findAll()" class="hold-transition skin-red sidebar-mini">
+<body ng-app="pinyougou" ng-controller="brandController" ng-init="" class="hold-transition skin-red sidebar-mini">
   <!-- .box-body -->
                     <div class="box-header with-border">
                         <h3 class="box-title">品牌管理</h3>
@@ -92,7 +129,7 @@
 							 
                         </div>
                         <!-- 数据表格 /-->
-                        
+                        <tm-pagination conf="paginationConf"/>
                         
                         
                         
