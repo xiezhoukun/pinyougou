@@ -1,14 +1,16 @@
 package com.pinyougou.sellergoods.service;
 
 import com.pinyougou.pojo.TbBrand;
+import com.pinyougou.service.BaseService;
 
 import java.util.List;
 
-public interface BrandService {
+public interface BrandService extends BaseService<TbBrand> {
     /**
      * 查询所有品牌数据
      * @return 品牌列表
      */
+    @Deprecated
     List<TbBrand> queryAll();
 
     /**
@@ -17,5 +19,6 @@ public interface BrandService {
      * @param rows 页大小
      * @return 品牌列表
      */
+    @Deprecated
     List<TbBrand> testPage(Integer page, Integer rows);
 }

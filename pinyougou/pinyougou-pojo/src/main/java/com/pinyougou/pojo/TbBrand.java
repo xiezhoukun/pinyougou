@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 //对应的数据库表名称为tb_brand
+//已一定的格式传递该对象
 @Table(name = "tb_brand")
 public class TbBrand implements Serializable {
 
