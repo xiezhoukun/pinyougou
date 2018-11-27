@@ -9,6 +9,7 @@ import com.pinyougou.vo.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/specification")
 @RestController
@@ -16,6 +17,11 @@ public class SpecificationController {
 
     @Reference
     private SpecificationService specificationService;
+
+    @GetMapping("/selectOptionList")
+    public List<Map> selectOptionList() {
+        return specificationService.selectOptionList();
+    }
 
     @RequestMapping("/findAll")
     public List<TbSpecification> findAll() {
