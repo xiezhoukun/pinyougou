@@ -148,7 +148,7 @@
 								 <table class="table table-bordered table-striped table-hover dataTable">
 					                    <thead>
 					                        <tr>
-											    <th class="sorting">颜色</th>
+											    <th class="sorting">颜色</th>{{image_entity.url}}
 											    <th class="sorting">图片</th>
                                                 <th class="sorting">操作</th>
 							            </thead>
@@ -158,7 +158,7 @@
 									            	{{vo.color}}
 									            </td>
 									            <td>
-									           		<img alt="" src="{{vo.url}}" width="100px" height="100px">
+									           		<img alt="无法显示图像" src="{{vo.url}}" width="100px" height="100px">
 									            </td>
                                               <td>
                                                   <button type="button" ng-click="delete_image_entity($index)" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
@@ -278,7 +278,7 @@
 		      		<td><input  class="form-control" placeholder="颜色" ng-model="image_entity.color">  </td>
 		      	</tr>			    
 		      	<tr>
-		      		<td>商品图片</td>
+		      		<td>商品图片</td>{{image_entity.url}}
 		      		<td>
 						<table>
 							<tr>
@@ -309,12 +309,12 @@
 
 
 <!-- 自定义规格窗口 -->
-<div class="modal fade" id="mySpecModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="mySpecModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
   <div class="modal-dialog" >
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">自定义规格</h3>
+			<h3 id="myModalLabel1">自定义规格</h3>
 		</div>
 		<div class="modal-body">							
 			

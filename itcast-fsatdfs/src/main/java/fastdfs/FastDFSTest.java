@@ -8,8 +8,8 @@ public class FastDFSTest {
     @Test
     public void test() throws Exception {
         //1. 获取追踪服务器的配置文件路径并设置到全局配置对象中；
-        String cont_filename = ClassLoader.getSystemResource("fastdfs/tracker.conf").getPath();
-        ClientGlobal.init(cont_filename);
+        String conf_filename = ClassLoader.getSystemResource("fastdfs/tracker.conf").getPath();
+        ClientGlobal.init(conf_filename);
         //2. 创建追踪服务器客户端；
         TrackerClient trackerClient = new TrackerClient();
         //3. 利用追踪服务器客户端获取追踪服务对象；
@@ -24,10 +24,9 @@ public class FastDFSTest {
          * group1
          * M00/00/00/wKgMqFv-GlKAT1qgAABw0se6LsY088.jpg
          */
-        String[] upload_file = storageClient.upload_file("E:\\IMG\\wallpaper\\Java.jpg", "jpg", null);
-        if (upload_file != null && upload_file.length > 0) {
+        String[] upload_file = storageClient.upload_file("E:\\IMG\\wallpaper\\funck2.jpg", "jpg", null);
 
-            //7. 处理上传的返回结果
+        if (upload_file != null && upload_file.length > 0) {
             for (String str : upload_file) {
                 System.out.println(str);
             }
