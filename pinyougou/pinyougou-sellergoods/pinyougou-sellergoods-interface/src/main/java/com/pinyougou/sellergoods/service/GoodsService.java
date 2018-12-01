@@ -10,4 +10,6 @@ public interface GoodsService extends BaseService<TbGoods> {
     PageResult search(Integer page, Integer rows, TbGoods goods);
 
     void addGoods(Goods goods);
+
+    void deleteGoodsByIds(Long[] ids);
 }
