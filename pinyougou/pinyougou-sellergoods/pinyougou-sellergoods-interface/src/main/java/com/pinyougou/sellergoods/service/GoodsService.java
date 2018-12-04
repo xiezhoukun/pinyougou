@@ -12,4 +12,10 @@ public interface GoodsService extends BaseService<TbGoods> {
     void addGoods(Goods goods);
 
     void deleteGoodsByIds(Long[] ids);
+
+    Goods findGoodsById(Long id);
+
+    void updateGoods(Goods goods);
+
+    void updateStatus(Long[] ids, String status);
 }
